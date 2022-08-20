@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>  
+        <meta charset="utf-8">
+        <title>Formulario restaurant</title>
+    </head>
+    <body>
+        <form action="{{ url_for('alta_res') }}" method="post">  
+            <h5>Introducir la informacion del restaurante</h5>
+            <div>
+                <p>Codigo clave de 5 caracteres restaurante: <input type = "text" name = "id" /></p>
+            </div>
+            <div>
+                <p>Nombre del restaurante: <input type = "text" name = "name" /></p>
+            </div>
+            <div>
+                <p>Direccion: <input type = "text" name = "adress" /></p>
+            </div>
+            <div>
+                <p>Tipo de restaunrante: <input type = "text" name = "type" /></p>
+            </div>
+            <div>
+                <p>Numero telefonico: <input type = "text" name = "telephone" /></p>
+            </div>
+            <div>
+                <button >Dar de alta</button>
+            </div>
+        </form>
+    </body>
+</html>
