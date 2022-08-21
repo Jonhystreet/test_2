@@ -1,6 +1,7 @@
 from ctypes import addressof
 from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
 
 #Creacion del esquema y las tablas posterior mente usaremos otro metodo para acceder a la informacion
 #----------------------------------------------------------------------------------------------------*
@@ -14,9 +15,8 @@ db = SQLAlchemy(app)
 
 
 #Creamos las tablas de usuario y de restaurantes
-class user(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
+class User_0(db.Model):
+    name = db.Column(db.String(80), primary_key=True ,unique=True, nullable=False)
     mail = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(30), nullable=False )
 
@@ -26,7 +26,7 @@ class user(db.Model):
         self.password = password
 
 class restaurant(db.Model):
-    id = db.Column(db.String(5), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     adress = db.Column(db.String(120), nullable=False)
     type = db.Column(db.String(30), nullable=False )
@@ -84,12 +84,19 @@ def form_restaurant():
 
 @app.route('/alta_res', methods=['POST'])
 def alta_res():
-    id = request.form.get("id")
     name = request.form.get("name")
     adress = request.form.get("adress")
     type = request.form.get("type")
     telephone = request.form.get("telephone")
     
+    #Ejectumas y obtenemos el maximo id del momento a eso
+    #le sumaremos uno posterior mente el .fetchone() guarda solo un valor
+    mycursor.execute("SELECT MAX(id) from restaurant")
+    result= mycursor.fetchone()
+    id = result[0] + 1
+    
+    #print(id)
+
     entry = restaurant(id,name,adress,type,telephone)  
     db.session.add(entry)
     db.session.commit() 
@@ -97,8 +104,28 @@ def alta_res():
 
 
 #*----------------------------------------------------------------#
+#Alta usuario
+
+@app.route('/form_usu')
+def form_usu():
+    return render_template("form_usu.html")
+
+#Aqui uso el metodo post y voy a almacenar los datos
 
 
+@app.route('/alta_usu', methods=['POST'])
+def alta_usu():
+    
+    name = request.form.get("name")
+    mail = request.form.get("mail")
+    password = request.form.get("password")
+    
+    entry = User_0(name,mail,password)  
+    db.session.add(entry)
+    db.session.commit() 
+    return render_template("index.html")
+
+#*----------------------------------------------------------------#
 
 #Alta USUARIO
 if __name__ == '__main__':
