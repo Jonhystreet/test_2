@@ -11,9 +11,14 @@ Agregado de usuario y de restaurante
 
 
 ***
+Visualizacion del restaurante
 
 
+v_restaurant
 
 
 
 ***
+Eliminacion de restaurante
+
+/form_elim_res  ->   /baja_res
