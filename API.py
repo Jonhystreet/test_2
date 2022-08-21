@@ -65,6 +65,7 @@ mycursor = conn.cursor()
 def index():
     return render_template('index.html')
 
+
 #*----------------------------------------------------------------#
 #Visualizador de restaurantes
 @app.route('/v_restaurant')
@@ -170,7 +171,10 @@ def alta_usu():
     db.session.commit() 
     return render_template("index.html")
 #*----------------------------------------------------------------#
-
+#ADMINISTRACION
+@app.route('/admon')
+def admon():
+    return render_template("admon.html")
 
 if __name__ == '__main__':
     app.run()

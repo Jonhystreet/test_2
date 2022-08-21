@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
-    <head>  
-        <meta charset="utf-8">
-        <title>Formulario restaurant</title>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylo.css') }}">
     </head>
+    
     <body>
         <style>
-       html, body {
+            html, body {
   align-items: center;
   background: #f2f4f8;
   border: 0;
@@ -30,7 +31,8 @@ html, body {
   margin: 0;
   padding: 0;
 }
-            form {
+
+form {
   --background: rgb(129, 241, 232);
   --border: rgba(0, 0, 0, 0.125);
   --borderDark: rgba(0, 0, 0, 0.25);
@@ -73,24 +75,12 @@ button{
     width:100%
 }
         </style>
-        <form action="{{ url_for('alta_res') }}" method="post">  
-            <h5>Introducir la informacion del restaurante</h5>
-           
-            <div>
-                <p>Nombre del restaurante: <input type = "text" name = "name_res" /></p>
-            </div>
-            <div>
-                <p>Direccion: <input type = "text" name = "adress" /></p>
-            </div>
-            <div>
-                <p>Tipo de restaunrante: <input type = "text" name = "type" /></p>
-            </div>
-            <div>
-                <p>Numero telefonico: <input type = "text" name = "telephone" /></p>
-            </div>
-            <div>
-                <button >Dar de alta</button>
-            </div>
-        </form>
+        
+        <p align="center"><a href=form_restaurant ><button class=grey style="height:75px;width:150px">Agregar restaurante</button></a></p> 
+       
+        <p align="center"><a href=form_elim_res ><button class=grey style="height:75px;width:150px">Eliminar restaurante</button></a></p> 
+        
+        <p align="center"><a href=form_act_res ><button class=grey style="height:75px;width:150px">Actualizar restaurante</button></a></p>   
     </body>
-</html>
+</html><!DOCTYPE html>
+    

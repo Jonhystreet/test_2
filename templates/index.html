@@ -4,17 +4,52 @@
         <title></title>
         <link rel="stylesheet" href="{{ url_for('static', filename='stylo.css') }}">
     </head>
+    
     <body>
-        <h1>Agregar restaurante</h1>
-        <p align="center"><a href=form_restaurant ><button class=grey style="height:75px;width:150px">Agregar restaurante</button></a></p> 
-        <h2>Informacion restaurants</h2>
-        <p align="center"><a href=v_restaurant ><button class=grey style="height:75px;width:150px">Visualizar restaurantes</button></a></p>
-        <h1>Agregar usuario</h1>
-        <p align="center"><a href=form_usu ><button class=grey style="height:75px;width:150px">Agregar usuario</button></a></p>
-        <h1>Eliminar restaurante</h1>
-        <p align="center"><a href=form_elim_res ><button class=grey style="height:75px;width:150px">Eliminar restaurante</button></a></p> 
-        <h1>Actualizacion restaurante</h1>
-        <p align="center"><a href=form_act_res ><button class=grey style="height:75px;width:150px">Actualizar restaurante</button></a></p>   
+        <style>
+        header {
+                background: rgba(0,0,0,0.7);
+                width: 100%;
+                position: fixed;
+                z-index: 100;
+            }
+            
+        nav {
+                float: left;
+            }
+            
+        nav ul {
+                list-style: none;
+                overflow: hidden; 
+            }
+            
+        nav ul li {
+                float: left;
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+            }
+        nav ul li a {
+                display: block;
+                padding: 10px;
+                color: #fff;
+                text-decoration: none;
+            }
+        nav ul li:hover {
+                background: #215dea;
+            }
+        </style>
+
+        <header>
+            <nav>
+                <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="form_usu">Registrarse</a></li>
+                <li><a href="v_restaurant">Listado restaurantes</a></li>
+                <li><a href="admon">Administracion</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            </nav>
+        </header>
     </body>
 </html><!DOCTYPE html>
     
