@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>  
+        <meta charset="utf-8">
+        <title>Formulario actualizacion restaurante</title>
+    </head>
+    <body>
+        <style>
+    html, body {
+  align-items: center;
+  background: #f2f4f8;
+  border: 0;
+  display: flex;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  align-items: center;
+  background: #fcfeff;
+  border: 0;
+  display: flex;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+            form {
+  --background: rgb(129, 241, 232);
+  --border: rgba(0, 0, 0, 0.125);
+  --borderDark: rgba(0, 0, 0, 0.25);
+  --borderDarker: rgba(0, 0, 0, 0.5);
+  --bgColorH: 0;
+  --bgColorS: 0%;
+  --bgColorL: 98%;
+  --fgColorH: 210;
+  --fgColorS: 50%;
+  --fgColorL: 38%;
+  --shadeDark: 0.3;
+  --shadeLight: 0.7;
+  --shadeNormal: 0.5;
+  --borderRadius: 0.125rem;
+  --highlight: #306090;
+  background: rgb(238, 240, 241);
+  border: 1px solid var(--border);
+  border-radius: var(--borderRadius);
+  box-shadow: 0 1rem 1rem -0.75rem var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+    }
+h5 {
+    margin: auto;
+  padding: 5px;
+    }
+input{
+    align-items: flex-start;
+    width: 100%;
+}
+p{
+    width:100%;
+}
+button{
+    text-align: center;
+    align-items: center;
+    width:100%
+}
+        </style>
+        <form action="{{ url_for('baja_res') }}" method="post">  
+        <h5>Eliminar restaurante</h5>
+        <div>
+            <p>Nombre del restaurante a eliminar: <input type = "text" name = "name_res" /></p>
+        </div>
+            <button >Dar de baja</button>
+        </div>
+        </form>
+    </body>
+</html>
