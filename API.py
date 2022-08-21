@@ -101,7 +101,8 @@ def alta_res():
     db.session.add(entry)
     db.session.commit() 
     return render_template("index.html")
-
+#*----------------------------------------------------------------#
+#Eliminacion restaurante
 
 #*----------------------------------------------------------------#
 #Alta usuario
