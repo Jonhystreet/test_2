@@ -2,11 +2,11 @@
 <html lang="es">
     <head>  
         <meta charset="utf-8">
-        <title>Formulario restaurant</title>
+        <title>Formulario actualizacion restaurante</title>
     </head>
     <body>
-        <form action="{{ url_for('alta_res') }}" method="post">  
-            <h5>Introducir la informacion del restaurante</h5>
+        <form action="{{ url_for('act_res') }}" method="post">  
+            <h5>Introducir la informacion a actualizar</h5>
            
             <div>
                 <p>Nombre del restaurante: <input type = "text" name = "name_res" /></p>
@@ -21,7 +21,7 @@
                 <p>Numero telefonico: <input type = "text" name = "telephone" /></p>
             </div>
             <div>
-                <button >Dar de alta</button>
+                <button >Actualizar registro</button>
             </div>
         </form>
     </body>

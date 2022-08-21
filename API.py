@@ -1,4 +1,6 @@
+from cgitb import text
 from ctypes import addressof
+from typing import Text
 from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
@@ -26,18 +28,21 @@ class User_0(db.Model):
         self.password = password
 
 class restaurant(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
+    name_res = db.Column(db.String(80), unique=True, nullable=False,primary_key=True)
     adress = db.Column(db.String(120), nullable=False)
     type = db.Column(db.String(30), nullable=False )
     telephone = db.Column(db.String(12),nullable=False)
 
-    def __init__(self,id ,name, adress,type,telephone):
-        self.id = id
-        self.name = name
+    def __init__(self,name_res, adress,type,telephone):
+        self.name_res = name_res
         self.adress = adress
         self.type = type
         self.telephone = telephone
+
+#Con la siguiente linea se crean la tabla de la base de datos:  db.create_all()
+#db.create_all()
+
+
 
 #---------------------------------------------------------------------------------------------------*
 #Ralizamos la conexion
@@ -79,30 +84,72 @@ def v_restaurant():
 def form_restaurant():
     return render_template("form_restaurant.html")
 
-#Aqui uso el metodo post y voy a almacenar los datos
-
-
 @app.route('/alta_res', methods=['POST'])
 def alta_res():
-    name = request.form.get("name")
+    name_res = request.form.get("name_res")
     adress = request.form.get("adress")
     type = request.form.get("type")
     telephone = request.form.get("telephone")
     
-    #Ejectumas y obtenemos el maximo id del momento a eso
-    #le sumaremos uno posterior mente el .fetchone() guarda solo un valor
-    mycursor.execute("SELECT MAX(id) from restaurant")
-    result= mycursor.fetchone()
-    id = result[0] + 1
-    
-    #print(id)
+   
 
-    entry = restaurant(id,name,adress,type,telephone)  
+    entry = restaurant(name_res,adress,type,telephone)  
     db.session.add(entry)
     db.session.commit() 
+    db.session.close()
     return render_template("index.html")
+
+
+
+
 #*----------------------------------------------------------------#
 #Eliminacion restaurante
+@app.route('/form_elim_res')
+def form_elim_res():
+    return render_template("form_elim_res.html")
+
+#Aqui es necesario activar el conn.commit para que verdaderamente
+#se guarde el cambio en la base de datos ya que sin el es un cambio 
+#provicional hasta hacer commit se realiza
+
+@app.route('/baja_res', methods=['POST'])
+def baja_res():
+    name_res = request.form.get("name_res")     
+    sql = "delete from restaurant where name_res='"+ name_res+"'"
+    mycursor.execute(sql)
+    conn.commit()
+    return render_template("index.html")
+
+
+#*----------------------------------------------------------------#
+
+
+
+
+#*----------------------------------------------------------------#
+#Actualizacion restaurante
+@app.route('/form_act_res')
+def form_act_res():
+    return render_template("form_act_res.html")
+
+#Aqui es necesario activar el conn.commit para que verdaderamente
+#se guarde el cambio en la base de datos ya que sin el es un cambio 
+#provicional hasta hacer commit se realiza
+
+@app.route('/act_res', methods=['POST'])
+def act_res():
+
+    name_res = request.form.get("name_res")
+    adress = request.form.get("adress")
+    type = request.form.get("type")
+    telephone = request.form.get("telephone")
+
+    sql = "UPDATE restaurant set adress='"+adress+"',type='"+type+"',telephone='"+telephone+"' where name_res='"+name_res+"'"
+    mycursor.execute(sql)
+    conn.commit()
+    return render_template("index.html")
+
+
 
 #*----------------------------------------------------------------#
 #Alta usuario
@@ -110,9 +157,6 @@ def alta_res():
 @app.route('/form_usu')
 def form_usu():
     return render_template("form_usu.html")
-
-#Aqui uso el metodo post y voy a almacenar los datos
-
 
 @app.route('/alta_usu', methods=['POST'])
 def alta_usu():
@@ -125,10 +169,8 @@ def alta_usu():
     db.session.add(entry)
     db.session.commit() 
     return render_template("index.html")
-
 #*----------------------------------------------------------------#
 
-#Alta USUARIO
+
 if __name__ == '__main__':
-    db.create_all()
     app.run()
