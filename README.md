@@ -53,7 +53,13 @@ Se especifica el nombre del restaurante a actualizar y se procede a actualizar
 ***
 #Requerimentos
 Librerias:
+
+
 -sycopg2
+
+
 -flask_sqlalchemy
+
+
 -flask
 
