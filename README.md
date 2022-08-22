@@ -20,12 +20,33 @@ tanto en los usuarios como en los restaurantes
 ***
 Visualizacion del restaurante
 
+se uso pys
 
-v_restaurant
+
+/v_restaurant
 
 
 
 ***
 Eliminacion de restaurante
 
-/form_elim_res  ->   /baja_res
+/form_elim_res  
+
+
+/baja_re
+
+***
+
+Actualizacion
+
+
+/form_act_res
+
+
+/act_res
+
+
+***
+#Requerimentos
+
+
