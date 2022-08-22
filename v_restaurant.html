@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Visualizador de restaurantes</title>
+    </head>
+    <body>
+    <style>
+    table {
+        width: 100%;
+        border: 1px solid #000;
+        }
+    th, td {
+        width: 25%;
+        text-align: left;
+        vertical-align: top;
+        border: 1px solid #000;
+        border-collapse: collapse;
+        padding: 0.3em;
+        caption-side: bottom;
+        }
+    caption {
+        padding: 0.3em;
+        color: rgb(252, 21, 21);
+            background: #000;
+        }
+    th {
+        background: #eee;
+        }
+    </style>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Type</th>
+                <th>Telephone</th>
+            </tr>
+            </thead>    
+        <tbody>
+        {% for row in data %}    
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </body>
+</html>
