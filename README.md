@@ -20,7 +20,7 @@ tanto en los usuarios como en los restaurantes
 ***
 Visualizacion del restaurante
 
-se uso pys
+Se uso sycopg2 y se extrae toda la informacion y se coloca en columnas con cabezeras con todos los datos
 
 
 /v_restaurant
@@ -29,6 +29,9 @@ se uso pys
 
 ***
 Eliminacion de restaurante
+
+Se especifica el nombre del restarante y se elimina ya que esta actua como llave primaria, igual se hace un
+formulario para especificar que restaurante eliminar
 
 /form_elim_res  
 
@@ -39,6 +42,7 @@ Eliminacion de restaurante
 
 Actualizacion
 
+Se especifica el nombre del restaurante a actualizar y se procede a actualizar
 
 /form_act_res
 
@@ -48,5 +52,8 @@ Actualizacion
 
 ***
 #Requerimentos
-
+Librerias:
+-sycopg2
+-flask_sqlalchemy
+-flask
 
